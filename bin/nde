@@ -1,0 +1,77 @@
+#!/usr/bin/env node
+var program = require('ginit').commander;
+var updater = require('update-notifier');
+var semver = require('semver');
+var packageJSON = require(__dirname+'/../package.json');
+var path = require('path');
+var fs = require('fs');
+var helpInfo = {
+  'init': ['初始化项目目录。', 'Init project directory'],
+};
+function getTask() {
+    return require('../index');
+}
+updater({pkg: packageJSON}).notify();
+
+
+var lang = process.env.LANG || 'zh';
+lang = (lang.indexOf('zh') === 0) ? 0 : 1;
+program
+  .version(packageJSON.version)
+program
+  .command('init [template]')
+  .description(helpInfo['init'][lang])
+  .action(function (template) {
+      getTask().init(template);
+  });
+
+
+program
+  .command('*')
+  .description('deploy the given env')
+  .action(function () {
+      var args = process.argv.slice(2);
+      var cli = args.shift();
+      execScript({cli: cli,args: args})
+  });
+
+const isLatest = semver.gt(process.version, '7.6.0');
+if(!isLatest){
+    return console.error('您的node版本比较低，请升级gt 7.6.0')
+}
+
+//提示
+if(process.argv.length === 2){
+    return spawnExecCli('nde -h');
+}
+
+function execScript(obj) {
+    var pkg = require(path.join(process.cwd(),'package.json')) || {};
+    var scripts = pkg.scripts || {};
+    var args = obj.args;//不管
+    var exec = scripts[obj.cli];
+    //不支持pre post
+    if(exec){
+        spawnExecCli(exec,function (err) {
+            if(err){
+                console.error(err)
+            }
+        });
+    }else {
+        console.log('not support command '+obj.cli)
+    }
+
+}
+program.parse(process.argv);
+
+
+function spawnExecCli (command,cb) {
+    cb = cb || function () {};
+    //5.6.0 支持以命令的方式执行
+    var npmRun = require('npm-run-script');
+    //{ stdio: 'inherit', shell: true }
+    var child = npmRun(command, { stdio: 'inherit'});
+    child.on('error', cb);
+    child.on('exit', cb);
+}
+

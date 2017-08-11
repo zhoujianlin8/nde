@@ -1,0 +1,59 @@
+{
+  "name": "nde",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/zhoujianlin8/nde.git"
+  },
+  "description": "nde node koa development",
+  "keyword": [
+    "koa",
+    "koa2",
+    "devtool",
+    "pm2"
+  ],
+  "main": "index.js",
+  "bin": {
+    "nde": "./bin/nde"
+  },
+  "engines": {
+    "node": ">= 7.6.0"
+  },
+  "scripts": {
+    "test": "mocha --require should --reporter List --check-leaks test/"
+  },
+  "author": {
+    "name": "zhoujianlin",
+    "email": "zhoujianlin8@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "ginit": "~2.0.2",
+    "npm-run-script": "0.0.4",
+    "semver": "^5.4.1",
+    "update-notifier": "^2.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0",
+    "should": "^5.0.0"
+  },
+  "gitHead": "f38de53e1c279f8dee7acf505abc8a86dc27359e",
+  "_id": "WRT@0.0.3",
+  "_shasum": "f61d3df4d5cf0c0d6de93ea55bd84acf530b9d67",
+  "_from": "WRT@*",
+  "_npmUser": {
+    "name": "zhoujianlin",
+    "email": "zhoujianlin8@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "zhoujianlin",
+      "email": "zhoujianlin8@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "f61d3df4d5cf0c0d6de93ea55bd84acf530b9d67",
+    "tarball": "http://registry.npmjs.org/WRT/-/WRT-0.0.3.tgz"
+  },
+  "directories": {}
+}

@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+var program = require('commander');
+var ginit = require('../index');
+
+program.parse(process.argv);
+
+var arg1 = program.args[0];
+if (!arg1) {
+   console.log('请输入对应的temp 地址 支持本地路径与线上.git 路径')
+}
+else{
+  ginit.init(arg1);
+}
+
+process.on('uncaughtException', function(err) {
+    console.log('uncaughtException: ' + err.message);
+});
