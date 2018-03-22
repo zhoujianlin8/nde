@@ -5,11 +5,10 @@
   "main": "app/index.js",
   "scripts": {
     "test": "mocha",
-    "daily": "NODE_ENV=daily node_modules/.bin/pm2 kill && node_modules/.bin/pm2 start bin/server.js -i true",
-    "pre": "NODE_ENV=pre node_modules/.bin/pm2 kill && node_modules/.bin/pm2 start bin/server.js -i true",
-    "publish": "NODE_ENV=publish node_modules/.bin/pm2 kill && node_modules/.bin/pm2 start bin/server.js  -i true",
-    "start": "NODE_ENV=local node bin/server.js",
-    "debug": "NODE_ENV=local devdebug bin/server.js --watch={config,app}/{**/*,*}.js"
+    "stop": "node_modules/.bin/pm2 stop <%=appname%> && node_modules/.bin/pm2 delete <%=appname%>",
+    "start": "node_modules/.bin/pm2 start bin/server.js -i true --name <%=appname%>",
+    "restart":"npm run stop && npm run start",
+    "debug": "node_modules/.bin/pm2 start bin/server.js --node-args=\"--inspect\" --name <%=appname%> --watch"
   },
   "repository": {
     "type": "git",

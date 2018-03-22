@@ -1,16 +1,16 @@
 ## NDE 工具
 ####主要特点
 * nodejs(Node)开发(Development)环境(Environment)
-* 使用 koa2 作为框架
-* 使用pm2 作为线上进程管理监控
-* 使用devdebug 作为开发环境
+* 使用 koa2 作为基础框架
+* 使用pm2 作为进程管理监控
+* 使用inspect开发调试
 
 ### 安装
 
 ```
 npm install -g nde
 ```
-* mac if error   sudo npm install -g nde-cli
+* mac if error   sudo npm install -g nde
 
 ### 使用过程
 
@@ -18,9 +18,9 @@ npm install -g nde
  mkdir test && cd test
  nde init(初始化项目 )
 
- npm run start|debug|daily|pre|publish
+ npm run start|stop|debug
 `````
-* npm run debug 需要先安装 npm install devdebug -g
+* npm run debug  
 
 
 
@@ -28,7 +28,7 @@ npm install -g nde
 ## 项目目录规范
 
 ```
-  m-xxx            // 目录名, 小写, 多字符用 – 分隔
+  xxx            // 目录名, 小写, 多字符用 – 分隔
      |-----bin/server.js    //
      |-----test     // 单元测试放的目录
      |-----app
@@ -37,6 +37,7 @@ npm install -g nde
 
 ```
 
-
+## 注意
+* node版本>7.6
 ### bug反馈 zhoujianlin8@gmail.com
 

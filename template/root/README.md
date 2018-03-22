@@ -1,8 +1,7 @@
 ## NDE 工具生成
 ```
-npm install devdebug -g 
-npm run debug
-npm run daily|pre|publish
+npm run debug 本地启动调试
+npm run start
 ```
 ### 使用文档
 * [nde](https://www.npmjs.com/package/nde)

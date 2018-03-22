@@ -1,6 +1,6 @@
 {
   "name": "nde",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "git@github.com/zhoujianlin8/nde.git"
@@ -9,7 +9,6 @@
   "keyword": [
     "koa",
     "koa2",
-    "devtool",
     "pm2"
   ],
   "main": "index.js",
